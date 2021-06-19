@@ -23,7 +23,7 @@ namespace ZrebSvetskoPrvenstvo
         public static Grupa grupaH;
         static void Main(string[] args)
         {
-            ucitajPodatke();
+            ucitajPodatke("D:\\Users\\Dragon\\source\\repos\\ZrebSvetskoPrvenstvo\\ZrebSvetskoPrvenstvo\\bin\\Debug\\netcoreapp3.1\\ulaz.csv");
 
             if (!validniPodaci())
             {
@@ -34,24 +34,94 @@ namespace ZrebSvetskoPrvenstvo
             napraviSesire();
             inicijalizujGrupe();
             napraviGrupe();
-            Console.WriteLine(grupaA.ToString()  +" "+grupaA.ListaReprezentacija.Count);
-            Console.WriteLine(grupaB.ToString() + " " + grupaB.ListaReprezentacija.Count);
-            Console.WriteLine(grupaC.ToString() + " " + grupaC.ListaReprezentacija.Count);
-            Console.WriteLine(grupaD.ToString() + " " + grupaD.ListaReprezentacija.Count);
-            Console.WriteLine(grupaE.ToString() + " " + grupaE.ListaReprezentacija.Count);
-            Console.WriteLine(grupaF.ToString() + " " + grupaF.ListaReprezentacija.Count);
-            Console.WriteLine(grupaG.ToString() + " " + grupaG.ListaReprezentacija.Count);
-            Console.WriteLine(grupaH.ToString() + " " + grupaH.ListaReprezentacija.Count);
+            dodeliPozicije();
+            upisiUCSVFajl2("grupe.csv");
+            upisiUCSVFajl("rezultatiUtakmica.csv", izgenerisiUtakmice());
+            
+            Console.WriteLine(grupaA.ToString().Trim(','));
+            Console.WriteLine(grupaB.ToString().Trim(','));
+            Console.WriteLine(grupaC.ToString().Trim(','));
+            Console.WriteLine(grupaD.ToString().Trim(','));
+            Console.WriteLine(grupaE.ToString().Trim(','));
+            Console.WriteLine(grupaF.ToString().Trim(','));
+            Console.WriteLine(grupaG.ToString().Trim(','));
+            Console.WriteLine(grupaH.ToString().Trim(','));
 
 
+            //Console.WriteLine(izgenerisiUtakmice());
 
 
+           /* Console.WriteLine();
+
+            Console.WriteLine(grupaA.ToString().Trim(',') + "\n" + grupaB.ToString().Trim(',') + "\n" + grupaC.ToString().Trim(',') + "\n" + grupaD.ToString().Trim(',') + "\n" + grupaE.ToString().Trim(',') + "\n"
+                + grupaF.ToString().Trim(',') + "\n" + grupaG.ToString().Trim(',') + "\n" + grupaH.ToString().Trim(','));*/
 
             /* foreach (Reprezentacija repka in listaReprezentacija)
              {
                  Console.WriteLine(repka.ToString());
              }*/
 
+        }
+
+
+        private static string izgenerisiUtakmice()
+        {
+            return grupaA.izgenerisiUtakmice() + grupaB.izgenerisiUtakmice() + grupaC.izgenerisiUtakmice() + grupaD.izgenerisiUtakmice() + grupaE.izgenerisiUtakmice() + grupaF.izgenerisiUtakmice() +
+             grupaG.izgenerisiUtakmice() + grupaH.izgenerisiUtakmice();
+        }
+
+        private static void upisiUCSVFajl(string nazivFajla,string upis)
+        {
+            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(nazivFajla, false))
+            {
+                sw.Write(upis);
+            }
+        }
+
+        private static void upisiUCSVFajl2(string nazivFajla)
+        {
+            string upis = grupaA.ToString().Trim(',') + "\n" + grupaB.ToString().Trim(',') + "\n" + grupaC.ToString().Trim(',') + "\n" + grupaD.ToString().Trim(',') + "\n" + grupaE.ToString().Trim(',') + "\n"
+                + grupaF.ToString().Trim(',') + "\n" + grupaG.ToString().Trim(',') + "\n" + grupaH.ToString().Trim(',');
+            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(nazivFajla,false)) {
+                sw.Write(upis);
+            }
+        }
+
+
+        private static void dodeliPozicije()
+        {
+            dodeliPozicijeGrupi(grupaA);
+            dodeliPozicijeGrupi(grupaB);
+            dodeliPozicijeGrupi(grupaC);
+            dodeliPozicijeGrupi(grupaD);
+            dodeliPozicijeGrupi(grupaE);
+            dodeliPozicijeGrupi(grupaF);
+            dodeliPozicijeGrupi(grupaG);
+            dodeliPozicijeGrupi(grupaH);
+        }
+
+        //Ekipa iz prvog sesira ima rang  1-8, ona dobija poziciju jedan, a ostale dobijaju random pozicije
+        private static void dodeliPozicijeGrupi(Grupa grupa)
+        {
+            for(int i =0;i<grupa.ListaReprezentacija.Count;i++)
+            {
+                if (grupa.ListaReprezentacija[i].Rang <= 8)
+                {
+                    grupa.ListaReprezentacija[i].PozicijaUGrupi = 1;
+                    Reprezentacija pomocna = grupa.ListaReprezentacija[i];
+                    grupa.ListaReprezentacija.Remove(pomocna);//sklanjam je pa je ubacujem na prvo mesto kako bih znao gde je i onda mogu nasumicno da prodjem kroz ostale
+                    grupa.ListaReprezentacija.Insert(0, pomocna);//Verovatno bi bilo efikasnije samo pomeriti element, ali male su liste, tako da ovde nije toliko bitno
+                }
+            }
+            //sad kad znam da je ovaj sa brojem jedan na prvoj poziciji, dodelicu nasumicno ovim ostalim
+            int brojac = 2;
+            Random r = new Random();
+            foreach (int i in Enumerable.Range(1, 3).OrderBy(x => r.Next()))
+            {
+                grupa.ListaReprezentacija[i].PozicijaUGrupi = brojac;
+                brojac++;
+            }
+            grupa.sortirajPremaPoziciji();
         }
 
         public static  bool validniPodaci()
@@ -80,9 +150,9 @@ namespace ZrebSvetskoPrvenstvo
             grupaH = new Grupa("H");
         }
 
-        private static void ucitajPodatke()
+        private static void ucitajPodatke(string putanja)
         {
-            string path = "D:\\Downloads\\ulaz.csv";
+            string path = putanja;
 
             string[] lines = System.IO.File.ReadAllLines(path);
             foreach (string line in lines)

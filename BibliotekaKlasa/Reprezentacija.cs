@@ -8,6 +8,8 @@ namespace BibliotekaKlasa
         private string ime;
         private string kvZona;
         private int rang;
+        int pozicijaUGrupi;
+        // nema potrebe da je stavljam u konstruktor, po defaultu ce biti nula, a posle cu svakako dodeliti vrednosti
 
         public Reprezentacija(string ime, string kvZona, int rang)
         {
@@ -35,9 +37,18 @@ namespace BibliotekaKlasa
             set => rang = value;
         }
 
+        public int PozicijaUGrupi
+        {
+            get => pozicijaUGrupi;
+            set => pozicijaUGrupi= value;
+        }
+
+
+
+
         public override string ToString()
         {
-            return ime + " " + kvZona + " " + rang + " ";
+            return pozicijaUGrupi + "." + ime + ",";
         }
 
         //ovo posle izmeni tako da iskoristis i tamo za grupe!!!
