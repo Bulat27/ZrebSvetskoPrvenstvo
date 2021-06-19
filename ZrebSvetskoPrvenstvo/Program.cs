@@ -21,8 +21,12 @@ namespace ZrebSvetskoPrvenstvo
         public static Grupa grupaF;
         public static Grupa grupaG;
         public static Grupa grupaH;
+
+        public static List<Grupa> iteracionaLista;
+
         static void Main(string[] args)
         {
+            //bolja je preksa praviti konstante nego hard-kodovati ove putanje i nazive fajlova, ali mali je program tako da nije veliki problem
             ucitajPodatke("D:\\Users\\Dragon\\source\\repos\\ZrebSvetskoPrvenstvo\\ZrebSvetskoPrvenstvo\\bin\\Debug\\netcoreapp3.1\\ulaz.csv");
 
             if (!validniPodaci())
@@ -35,8 +39,11 @@ namespace ZrebSvetskoPrvenstvo
             inicijalizujGrupe();
             napraviGrupe();
             dodeliPozicije();
-            upisiUCSVFajl2("grupe.csv");
-            upisiUCSVFajl("rezultatiUtakmica.csv", izgenerisiUtakmice());
+            upisiUCSVFajl("grupe.csv", grupeZaUpis());
+            upisiUCSVFajl("rezultatiUtakmica.csv", utakmiceZaUpis());
+            sortirajSvePoRezultatu();
+            upisiUCSVFajl("sledecaFaza.csv", krajnjiIzgledGrupaZaUpis());
+
             
             Console.WriteLine(grupaA.ToString().Trim(','));
             Console.WriteLine(grupaB.ToString().Trim(','));
@@ -62,12 +69,34 @@ namespace ZrebSvetskoPrvenstvo
              }*/
 
         }
+        //Generise string koji ce se upistati u sledecaFaza.csv
 
 
-        private static string izgenerisiUtakmice()
+        private static void sortirajSvePoRezultatu()
         {
-            return grupaA.izgenerisiUtakmice() + grupaB.izgenerisiUtakmice() + grupaC.izgenerisiUtakmice() + grupaD.izgenerisiUtakmice() + grupaE.izgenerisiUtakmice() + grupaF.izgenerisiUtakmice() +
-             grupaG.izgenerisiUtakmice() + grupaH.izgenerisiUtakmice();
+            foreach (Grupa grupa in iteracionaLista) grupa.sortirajPremaRezultatu();
+        }
+
+        private static string krajnjiIzgledGrupaZaUpis()
+        {
+            String s = "";
+            foreach(Grupa grupa in iteracionaLista)
+            {
+                s += grupa.ImeGrupe + "," + grupa.toStringSaProlazom().Trim(',').Trim('-')+"\n";
+            }
+            return s;
+        }
+
+
+
+        private static string utakmiceZaUpis()
+        {
+            string s = "";
+            foreach(Grupa grupa in iteracionaLista)
+            {
+                s += grupa.izgenerisiUtakmice();
+            }
+            return s;
         }
 
         private static void upisiUCSVFajl(string nazivFajla,string upis)
@@ -78,26 +107,20 @@ namespace ZrebSvetskoPrvenstvo
             }
         }
 
-        private static void upisiUCSVFajl2(string nazivFajla)
+        private static string grupeZaUpis()
         {
-            string upis = grupaA.ToString().Trim(',') + "\n" + grupaB.ToString().Trim(',') + "\n" + grupaC.ToString().Trim(',') + "\n" + grupaD.ToString().Trim(',') + "\n" + grupaE.ToString().Trim(',') + "\n"
-                + grupaF.ToString().Trim(',') + "\n" + grupaG.ToString().Trim(',') + "\n" + grupaH.ToString().Trim(',');
-            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(nazivFajla,false)) {
-                sw.Write(upis);
+            string s = "";
+            foreach(Grupa grupa in iteracionaLista)
+            {
+                s += grupa.ToString().Trim(',') + "\n";
             }
+            return s;
         }
 
 
         private static void dodeliPozicije()
         {
-            dodeliPozicijeGrupi(grupaA);
-            dodeliPozicijeGrupi(grupaB);
-            dodeliPozicijeGrupi(grupaC);
-            dodeliPozicijeGrupi(grupaD);
-            dodeliPozicijeGrupi(grupaE);
-            dodeliPozicijeGrupi(grupaF);
-            dodeliPozicijeGrupi(grupaG);
-            dodeliPozicijeGrupi(grupaH);
+            foreach (Grupa grupa in iteracionaLista) dodeliPozicijeGrupi(grupa);
         }
 
         //Ekipa iz prvog sesira ima rang  1-8, ona dobija poziciju jedan, a ostale dobijaju random pozicije
@@ -124,7 +147,7 @@ namespace ZrebSvetskoPrvenstvo
             grupa.sortirajPremaPoziciji();
         }
 
-        public static  bool validniPodaci()
+        public static bool validniPodaci()
         {
              return (
                 Reprezentacija.brojPojavljivanjaKontitenta(listaReprezentacija, "Afrika") == 5 && Reprezentacija.brojPojavljivanjaKontitenta(listaReprezentacija, "Azija") == 5 &&
@@ -141,13 +164,23 @@ namespace ZrebSvetskoPrvenstvo
         private static void inicijalizujGrupe()
         {
             grupaA = new Grupa("A");
-            grupaB= new Grupa("B");
+            grupaB=  new Grupa("B");
             grupaC = new Grupa("C");
             grupaD = new Grupa("D");
             grupaE = new Grupa("E");
             grupaF = new Grupa("F");
             grupaG = new Grupa("G");
             grupaH = new Grupa("H");
+
+            iteracionaLista = new List<Grupa>();
+            iteracionaLista.Add(grupaA);
+            iteracionaLista.Add(grupaB);
+            iteracionaLista.Add(grupaC);
+            iteracionaLista.Add(grupaD);
+            iteracionaLista.Add(grupaE);
+            iteracionaLista.Add(grupaF);
+            iteracionaLista.Add(grupaG);
+            iteracionaLista.Add(grupaH);
         }
 
         private static void ucitajPodatke(string putanja)
@@ -160,11 +193,7 @@ namespace ZrebSvetskoPrvenstvo
                 string[] columns = line.Split(',');
                 //Bolja je praksa koristiti TryParse, ali mi ovde nije potrebno jer znam da su dobri podaci
                 listaReprezentacija.Add(new Reprezentacija(columns[0], columns[1], Int32.Parse(columns[2])));
-                /*foreach (string column in columns)
-                {
-                    Console.Write(column+ " ");
-                }
-                Console.WriteLine();*/
+               
             }
             listaReprezentacija = listaReprezentacija.OrderBy(Reprezentacija => Reprezentacija.Rang).ToList();
         }
@@ -181,7 +210,7 @@ namespace ZrebSvetskoPrvenstvo
         {
             bool nasaoKombinaciju;
 
-            List<Grupa> iteracionaLista = napraviIteracionuListu();
+            //List<Grupa> iteracionaLista = napraviIteracionuListu();
             //Napravicu shallow kopije kako bih resio situaciju u kojoj mora ponovo da se izvlaci jer ne mogu biti zadovoljenja ogranicenja. Shallow kopije su ovde dovoljne
             //jer svakako necu da menjam sama polja objekta tipa Reprezentacija
             //radniSesir je u stvari taj rezervni sesir jer ne zelim da menjam stanje pravog sesira kako bih mogao posle ponovo da pocnem ispocetka ako je potrebno.
@@ -191,17 +220,16 @@ namespace ZrebSvetskoPrvenstvo
             List<Reprezentacija> radniCetvrtiSesir = new List<Reprezentacija>(cetvrtiSesir);
 
             //Ove ovde provere su potrebne jer bi nemoguca kombinacija potencijalno mogla da nastane u nakon obrade bilo kog sesira (osim prvog).
-            obradiSesir(radniPrviSesir,iteracionaLista);
-            nasaoKombinaciju= obradiSesir(radniDrugiSesir,iteracionaLista);
-            if (nasaoKombinaciju)nasaoKombinaciju= obradiSesir(radniTreciSesir, iteracionaLista);
+            obradiSesir(radniPrviSesir);
+            nasaoKombinaciju= obradiSesir(radniDrugiSesir);
+            if (nasaoKombinaciju)nasaoKombinaciju= obradiSesir(radniTreciSesir);
             else return;
-            if(nasaoKombinaciju) obradiSesir(radniCetvrtiSesir,iteracionaLista);
+            if(nasaoKombinaciju) obradiSesir(radniCetvrtiSesir);
 
         }
 
-        private static bool obradiSesir(List<Reprezentacija> sesir, List<Grupa> iteracionaLista)
+        private static bool obradiSesir(List<Reprezentacija> sesir)
         {
-            //List<Grupa> iteracionaLista = napraviIteracionuListu();
             int brojac = 0;
             int sekundarniBrojac = 0;
             while (sesir.Any())
@@ -215,7 +243,7 @@ namespace ZrebSvetskoPrvenstvo
                     continue;
                 }
 
-                if (/*(iteracionaLista[brojac%8].ListaReprezentacija.Count<4 ) &&*/ ((iteracionaLista[brojac % 8].brojPojavljivanjaKvalifikacioneZone(sesir[pozicija].KvZona)==0) || 
+                if (((iteracionaLista[brojac % 8].brojPojavljivanjaKvalifikacioneZone(sesir[pozicija].KvZona)==0) || 
                     (sesir[pozicija].KvZona.Equals("Evropa") && iteracionaLista[brojac % 8].brojPojavljivanjaKvalifikacioneZone(sesir[pozicija].KvZona) <= 1)))
                 {
                     iteracionaLista[brojac % 8].ListaReprezentacija.Add(sesir[pozicija]);
@@ -236,9 +264,6 @@ namespace ZrebSvetskoPrvenstvo
                     napraviGrupe();
                     return false;
                 }
-
-               // brojac++;
-
             }
             return true;
         }
@@ -251,21 +276,7 @@ namespace ZrebSvetskoPrvenstvo
             return random.Next(0,count);
         }
 
-        private static List<Grupa> napraviIteracionuListu()
-        {
-            List<Grupa> iteracionaLista = new List<Grupa>();
-            iteracionaLista.Add(grupaA);
-            iteracionaLista.Add(grupaB);
-            iteracionaLista.Add(grupaC);
-            iteracionaLista.Add(grupaD);
-            iteracionaLista.Add(grupaE);
-            iteracionaLista.Add(grupaF);
-            iteracionaLista.Add(grupaG);
-            iteracionaLista.Add(grupaH);
-
-
-            return iteracionaLista;
-        }
+       
 
         
 
