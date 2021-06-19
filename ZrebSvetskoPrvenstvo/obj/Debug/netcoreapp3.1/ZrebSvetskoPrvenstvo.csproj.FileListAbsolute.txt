@@ -1,0 +1,16 @@
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.exe
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.deps.json
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.runtimeconfig.json
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.runtimeconfig.dev.json
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.dll
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.pdb
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.csprojAssemblyReference.cache
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.AssemblyInfoInputs.cache
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.AssemblyInfo.cs
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.csproj.CoreCompileInputs.cache
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.dll
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.pdb
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.genruntimeconfig.cache
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\BibliotekaKlasa.dll
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\bin\Debug\netcoreapp3.1\BibliotekaKlasa.pdb
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\ZrebSvetskoPrvenstvo\obj\Debug\netcoreapp3.1\ZrebSvetskoPrvenstvo.csproj.CopyComplete

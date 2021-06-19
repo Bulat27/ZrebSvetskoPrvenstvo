@@ -1,0 +1,9 @@
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\bin\Debug\netcoreapp3.1\BibliotekaKlasa.deps.json
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\bin\Debug\netcoreapp3.1\BibliotekaKlasa.dll
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\bin\Debug\netcoreapp3.1\BibliotekaKlasa.pdb
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\obj\Debug\netcoreapp3.1\BibliotekaKlasa.AssemblyInfoInputs.cache
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\obj\Debug\netcoreapp3.1\BibliotekaKlasa.AssemblyInfo.cs
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\obj\Debug\netcoreapp3.1\BibliotekaKlasa.csproj.CoreCompileInputs.cache
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\obj\Debug\netcoreapp3.1\BibliotekaKlasa.dll
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\obj\Debug\netcoreapp3.1\BibliotekaKlasa.pdb
+D:\Users\Dragon\source\repos\ZrebSvetskoPrvenstvo\BibliotekaKlasa\obj\Debug\netcoreapp3.1\BibliotekaKlasa.csprojAssemblyReference.cache

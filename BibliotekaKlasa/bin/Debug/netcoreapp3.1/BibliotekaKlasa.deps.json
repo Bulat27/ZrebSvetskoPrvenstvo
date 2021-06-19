@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "BibliotekaKlasa/1.0.0": {
+        "runtime": {
+          "BibliotekaKlasa.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BibliotekaKlasa/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
