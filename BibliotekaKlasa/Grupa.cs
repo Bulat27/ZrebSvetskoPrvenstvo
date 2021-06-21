@@ -84,8 +84,8 @@ namespace BibliotekaKlasa
                         reprezentacija2.BrojPoena += 1;
                     break;
             }
-            reprezentacija1.KoeficijentGolova = brojGolova1 - brojGolova2;
-            reprezentacija2.KoeficijentGolova = brojGolova2 - brojGolova1;
+            reprezentacija1.KoeficijentGolova += brojGolova1 - brojGolova2;
+            reprezentacija2.KoeficijentGolova += brojGolova2 - brojGolova1;
 
 
         }
@@ -94,7 +94,7 @@ namespace BibliotekaKlasa
         {
             //Na ovaj nacin mnogo vecu tezinu dajem broju poena. Samim tim, ako reprezentacije imaju isti broj poena, odlucice koeficijent golova.
             //Sa druge strane, ako reprezentacija sa manjim brojem poena ima bolji koeficijent, i dalje ce presuditi broj poena jer ima mnogo vecu tezinu.
-            listaReprezentacija = listaReprezentacija.OrderBy(Reprezentacija => Reprezentacija.BrojPoena*10000 +  Reprezentacija.KoeficijentGolova).ToList();
+            listaReprezentacija = listaReprezentacija.OrderByDescending(Reprezentacija => Reprezentacija.BrojPoena*10000 +  Reprezentacija.KoeficijentGolova).ToList();
             promeniPozicijeUGrupi();
         }
 
@@ -120,7 +120,15 @@ namespace BibliotekaKlasa
         }
 
 
-
+        public string toStringSaProlazom2()
+        {
+            string s = "";
+            foreach (Reprezentacija reprezentacija in listaReprezentacija)
+            {
+                s += reprezentacija.PozicijaUGrupi + "." + reprezentacija.Ime + "-" + reprezentacija.Status + "," +  (reprezentacija.BrojPoena * 10000 + reprezentacija.KoeficijentGolova) + " ";
+            }
+            return s;
+        }
     }
        
 }

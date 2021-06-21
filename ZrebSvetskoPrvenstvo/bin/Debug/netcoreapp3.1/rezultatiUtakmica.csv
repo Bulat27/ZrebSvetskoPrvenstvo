@@ -1,48 +1,48 @@
-A ,Poljska,Juzna Koreja,28,29
-A ,Poljska,Maroko,31,23
-A ,Poljska,Island,25,35
-A ,Juzna Koreja,Maroko,27,40
-A ,Juzna Koreja,Island,15,16
-A ,Maroko,Island,29,3
-B ,Argentina,Kostarika,16,3
-B ,Argentina,Hrvatska,27,5
-B ,Argentina,Nigerija,39,16
-B ,Kostarika,Hrvatska,3,2
-B ,Kostarika,Nigerija,36,44
-B ,Hrvatska,Nigerija,47,34
-C ,Brazil,Egipat,12,45
-C ,Brazil,Svedska,16,31
-C ,Brazil,Meksiko,20,28
-C ,Egipat,Svedska,2,44
-C ,Egipat,Meksiko,49,14
-C ,Svedska,Meksiko,19,22
-D ,Francuska,Engleska,27,14
-D ,Francuska,Kolumbija,9,49
-D ,Francuska,Saudijska Arabija,9,36
-D ,Engleska,Kolumbija,42,15
-D ,Engleska,Saudijska Arabija,28,18
-D ,Kolumbija,Saudijska Arabija,19,11
-E ,Portugal,Australia,15,26
-E ,Portugal,Srbija,7,8
-E ,Portugal,Peru,20,32
-E ,Australia,Srbija,41,10
-E ,Australia,Peru,1,14
-E ,Srbija,Peru,11,39
-F ,Svajcarska,Senegal,4,44
-F ,Svajcarska,Iran,23,12
-F ,Svajcarska,Spanija,47,32
-F ,Senegal,Iran,32,11
-F ,Senegal,Spanija,48,1
-F ,Iran,Spanija,3,37
-G ,Nemacka,Urugvaj,44,13
-G ,Nemacka,Danska,9,1
-G ,Nemacka,Panama,45,31
-G ,Urugvaj,Danska,5,14
-G ,Urugvaj,Panama,21,10
-G ,Danska,Panama,30,32
-H ,Belgija,Rusija,37,23
-H ,Belgija,Japan,31,25
-H ,Belgija,Tunis,18,44
-H ,Rusija,Japan,3,25
-H ,Rusija,Tunis,7,45
-H ,Japan,Tunis,49,26
+A ,Nemacka,Kolumbija,13,41
+A ,Nemacka,Meksiko,36,43
+A ,Nemacka,Hrvatska,47,19
+A ,Kolumbija,Meksiko,15,6
+A ,Kolumbija,Hrvatska,36,26
+A ,Meksiko,Hrvatska,32,13
+B ,Portugal,Juzna Koreja,15,50
+B ,Portugal,Svedska,41,0
+B ,Portugal,Nigerija,4,22
+B ,Juzna Koreja,Svedska,25,20
+B ,Juzna Koreja,Nigerija,7,40
+B ,Svedska,Nigerija,9,37
+C ,Argentina,Egipat,12,14
+C ,Argentina,Kostarika,12,11
+C ,Argentina,Rusija,8,27
+C ,Egipat,Kostarika,2,28
+C ,Egipat,Rusija,44,33
+C ,Kostarika,Rusija,23,3
+D ,Svajcarska,Panama,33,24
+D ,Svajcarska,Danska,33,13
+D ,Svajcarska,Senegal,24,33
+D ,Panama,Danska,18,30
+D ,Panama,Senegal,12,31
+D ,Danska,Senegal,3,49
+E ,Belgija,Peru,24,44
+E ,Belgija,Japan,9,49
+E ,Belgija,Srbija,6,7
+E ,Peru,Japan,42,25
+E ,Peru,Srbija,7,4
+E ,Japan,Srbija,19,44
+F ,Francuska,Engleska,24,45
+F ,Francuska,Iran,22,34
+F ,Francuska,Maroko,30,40
+F ,Engleska,Iran,28,1
+F ,Engleska,Maroko,4,11
+F ,Iran,Maroko,46,27
+G ,Brazil,Tunis,17,44
+G ,Brazil,Spanija,42,42
+G ,Brazil,Saudijska Arabija,40,1
+G ,Tunis,Spanija,46,40
+G ,Tunis,Saudijska Arabija,15,32
+G ,Spanija,Saudijska Arabija,26,44
+H ,Poljska,Island,18,39
+H ,Poljska,Urugvaj,46,38
+H ,Poljska,Australia,37,28
+H ,Island,Urugvaj,4,20
+H ,Island,Australia,12,3
+H ,Urugvaj,Australia,3,19

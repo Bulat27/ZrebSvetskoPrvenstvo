@@ -44,15 +44,16 @@ namespace ZrebSvetskoPrvenstvo
             sortirajSvePoRezultatu();
             upisiUCSVFajl("sledecaFaza.csv", krajnjiIzgledGrupaZaUpis());
 
-            
-            Console.WriteLine(grupaA.ToString().Trim(','));
+
+            /*Console.WriteLine(grupaA.ToString().Trim(','));
             Console.WriteLine(grupaB.ToString().Trim(','));
             Console.WriteLine(grupaC.ToString().Trim(','));
             Console.WriteLine(grupaD.ToString().Trim(','));
             Console.WriteLine(grupaE.ToString().Trim(','));
             Console.WriteLine(grupaF.ToString().Trim(','));
             Console.WriteLine(grupaG.ToString().Trim(','));
-            Console.WriteLine(grupaH.ToString().Trim(','));
+            Console.WriteLine(grupaH.ToString().Trim(','));*/
+            Console.WriteLine(krajnjiIzgledGrupaZaUpis2());
 
 
             //Console.WriteLine(izgenerisiUtakmice());
@@ -72,6 +73,10 @@ namespace ZrebSvetskoPrvenstvo
         //Generise string koji ce se upistati u sledecaFaza.csv
 
 
+
+
+
+
         private static void sortirajSvePoRezultatu()
         {
             foreach (Grupa grupa in iteracionaLista) grupa.sortirajPremaRezultatu();
@@ -86,6 +91,20 @@ namespace ZrebSvetskoPrvenstvo
             }
             return s;
         }
+
+        private static string krajnjiIzgledGrupaZaUpis2()
+        {
+            String s = "";
+            foreach (Grupa grupa in iteracionaLista)
+            {
+                s += grupa.ImeGrupe + "," + grupa.toStringSaProlazom2().Trim(',').Trim('-') + "\n";
+            }
+            return s;
+        }
+
+
+
+
 
 
 
@@ -269,21 +288,10 @@ namespace ZrebSvetskoPrvenstvo
         }
 
        
-
         private static int generisiRandomPoziciju(int count)
         {
             var random = new Random();
             return random.Next(0,count);
         }
-
-       
-
-        
-
-
     }
-
-   
-
-
 }
