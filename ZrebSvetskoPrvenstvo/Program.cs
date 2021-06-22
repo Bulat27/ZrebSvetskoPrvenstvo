@@ -31,7 +31,7 @@ namespace ZrebSvetskoPrvenstvo
 
             if (!validniPodaci())
             {
-                Console.WriteLine("NISU VALIDNI PODACI!");
+                Console.WriteLine("NISU VALIDNI PODACI!");//ovde moze i Exception da se baci, nije bas naglaseno, ali svakako program ne nastavlja sa radom
                 return;
             }
 
@@ -44,43 +44,15 @@ namespace ZrebSvetskoPrvenstvo
             sortirajSvePoRezultatu();
             upisiUCSVFajl("sledecaFaza.csv", krajnjiIzgledGrupaZaUpis());
 
-
-            /*Console.WriteLine(grupaA.ToString().Trim(','));
-            Console.WriteLine(grupaB.ToString().Trim(','));
-            Console.WriteLine(grupaC.ToString().Trim(','));
-            Console.WriteLine(grupaD.ToString().Trim(','));
-            Console.WriteLine(grupaE.ToString().Trim(','));
-            Console.WriteLine(grupaF.ToString().Trim(','));
-            Console.WriteLine(grupaG.ToString().Trim(','));
-            Console.WriteLine(grupaH.ToString().Trim(','));*/
-            Console.WriteLine(krajnjiIzgledGrupaZaUpis2());
-
-
-            //Console.WriteLine(izgenerisiUtakmice());
-
-
-           /* Console.WriteLine();
-
-            Console.WriteLine(grupaA.ToString().Trim(',') + "\n" + grupaB.ToString().Trim(',') + "\n" + grupaC.ToString().Trim(',') + "\n" + grupaD.ToString().Trim(',') + "\n" + grupaE.ToString().Trim(',') + "\n"
-                + grupaF.ToString().Trim(',') + "\n" + grupaG.ToString().Trim(',') + "\n" + grupaH.ToString().Trim(','));*/
-
-            /* foreach (Reprezentacija repka in listaReprezentacija)
-             {
-                 Console.WriteLine(repka.ToString());
-             }*/
-
         }
-        //Generise string koji ce se upistati u sledecaFaza.csv
-
-
-
-
-
+        
 
         private static void sortirajSvePoRezultatu()
         {
             foreach (Grupa grupa in iteracionaLista) grupa.sortirajPremaRezultatu();
         }
+
+        //Generise string koji ce se upistati u sledecaFaza.csv
 
         private static string krajnjiIzgledGrupaZaUpis()
         {
@@ -91,22 +63,6 @@ namespace ZrebSvetskoPrvenstvo
             }
             return s;
         }
-
-        private static string krajnjiIzgledGrupaZaUpis2()
-        {
-            String s = "";
-            foreach (Grupa grupa in iteracionaLista)
-            {
-                s += grupa.ImeGrupe + "," + grupa.toStringSaProlazom2().Trim(',').Trim('-') + "\n";
-            }
-            return s;
-        }
-
-
-
-
-
-
 
         private static string utakmiceZaUpis()
         {
@@ -135,7 +91,6 @@ namespace ZrebSvetskoPrvenstvo
             }
             return s;
         }
-
 
         private static void dodeliPozicije()
         {
@@ -176,8 +131,6 @@ namespace ZrebSvetskoPrvenstvo
              );
             
         }
-
-
 
 
         private static void inicijalizujGrupe()
@@ -229,7 +182,6 @@ namespace ZrebSvetskoPrvenstvo
         {
             bool nasaoKombinaciju;
 
-            //List<Grupa> iteracionaLista = napraviIteracionuListu();
             //Napravicu shallow kopije kako bih resio situaciju u kojoj mora ponovo da se izvlaci jer ne mogu biti zadovoljenja ogranicenja. Shallow kopije su ovde dovoljne
             //jer svakako necu da menjam sama polja objekta tipa Reprezentacija
             //radniSesir je u stvari taj rezervni sesir jer ne zelim da menjam stanje pravog sesira kako bih mogao posle ponovo da pocnem ispocetka ako je potrebno.
@@ -278,7 +230,6 @@ namespace ZrebSvetskoPrvenstvo
                 //pa da se posle vratimo, nikad nece biti ispunjeno da svaka grupa ima tacno jednu ekipu iz svakog sesira. Zato cemo ovde samo ispocetka ponoviti izvlacenje.
                 if (sekundarniBrojac > 1000)
                 {
-                    Console.WriteLine("Iz drugog izvlacenja!");
                     inicijalizujGrupe();//ponovna inicijalizacija kako bismo ocistili grupe
                     napraviGrupe();
                     return false;
@@ -287,7 +238,6 @@ namespace ZrebSvetskoPrvenstvo
             return true;
         }
 
-       
         private static int generisiRandomPoziciju(int count)
         {
             var random = new Random();

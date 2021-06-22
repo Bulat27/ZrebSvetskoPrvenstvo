@@ -118,17 +118,6 @@ namespace BibliotekaKlasa
             }
             return s;
         }
-
-
-        public string toStringSaProlazom2()
-        {
-            string s = "";
-            foreach (Reprezentacija reprezentacija in listaReprezentacija)
-            {
-                s += reprezentacija.PozicijaUGrupi + "." + reprezentacija.Ime + "-" + reprezentacija.Status + "," +  (reprezentacija.BrojPoena * 10000 + reprezentacija.KoeficijentGolova) + " ";
-            }
-            return s;
-        }
     }
        
 }
